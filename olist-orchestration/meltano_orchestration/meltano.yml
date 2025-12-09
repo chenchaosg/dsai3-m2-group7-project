@@ -1,0 +1,32 @@
+# =============================================================================
+# meltano.yml - configuration file. To load data from CSV to BigQuery
+# =============================================================================
+
+version: 1
+default_environment: dev
+project_id: b0e3840f-8fe3-4419-bbb0-2221f6cbe52c
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-csv
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/tap-csv.git
+    config:
+      csv_files_definition: $MELTANO_PROJECT_ROOT/olist_files_definition.json
+  loaders:
+  - name: target-bigquery
+    variant: z3z1ma
+    pip_url: git+https://github.com/z3z1ma/target-bigquery.git
+    config:
+      parallelism: 1
+      credentials_path: 
+        <your-gcp-credentials-path>
+      dataset: <your-dataset-name>
+      denormalized: true
+      flattening_enabled: true
+      flattening_max_depth: 1
+      method: batch_job
+      project: <your-gcp-project-id>

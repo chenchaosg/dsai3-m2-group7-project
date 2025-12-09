@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_olist_geolocation
+    description: Staging table for geolocation data. Contains duplicates, so we only test for not_null.
+    columns:
+      - name: geolocation_zip_code_prefix
+        tests:
+          - not_null
+      - name: geolocation_lat
+        description: Latitude. Should be between -90 and 90.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: -90
+              max_value: 90
+      - name: geolocation_lng
+        description: Longitude. Should be between -180 and 180.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: -180
+              max_value: 180

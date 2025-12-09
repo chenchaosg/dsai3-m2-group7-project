@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_olist_sellers
+    description: Staging table for sellers.
+    columns:
+      - name: seller_id
+        tests:
+          - unique
+          - not_null

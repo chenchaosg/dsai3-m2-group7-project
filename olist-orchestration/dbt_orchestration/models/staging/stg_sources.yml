@@ -1,0 +1,20 @@
+# models/staging/stg_sources.yml
+version: 2
+
+sources:
+  - name: <your GCP Meltano dataset>
+    description: "Source data loaded by Meltano from the Olist public dataset."
+    database: <your GCP project ID>
+    schema: <your GCP Meltano dataset>
+    
+    # all 9 tables in the dataset
+    tables:
+      - name: olist_customers_dataset
+      - name: olist_geolocation_dataset
+      - name: olist_order_items_dataset
+      - name: olist_order_payments_dataset
+      - name: olist_order_reviews_dataset
+      - name: olist_orders_dataset
+      - name: olist_products_dataset
+      - name: olist_sellers_dataset
+      - name: product_category_name_translation

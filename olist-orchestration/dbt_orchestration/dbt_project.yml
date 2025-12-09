@@ -1,0 +1,36 @@
+# dbt_project/dbt_project.yml
+
+# 1. General project configuration
+name: 'dbt_orchestration'
+version: '1.0.0'
+
+# 2. Profile configuration
+# This profile name must match the one in your ~/.dbt/profiles.yml
+profile: 'dbt_orchestration'
+
+# 3. Path configurations
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# 4. Model configurations (This is the most important part for performance)
+# We apply a "materialized" strategy based on the model's directory.
+models:
+  dbt_orchestration:
+    # Configuration for the 'staging' subdirectory
+    staging:
+      +materialized: view  # All models in models/staging/ will be created as views.
+      +schema: stg         # Optional: Suffix the schema name with 'stg'
+    
+    # Configuration for the 'marts' subdirectory
+    marts:
+      +materialized: table # All models in models/marts/ will be created as tables.
+

@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_olist_customers
+    description: Staging table for customers data.
+    columns:
+      - name: customer_id
+        description: Primary key for this table.
+        tests:
+          - unique
+          - not_null
+      - name: customer_unique_id
+        description: The real unique identifier for a customer.
+        tests:
+          - not_null

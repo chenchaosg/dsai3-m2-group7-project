@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Customer dimension table, providing a 360-degree view of each unique customer's lifetime activity."
+    columns:
+      - name: customer_unique_id
+        description: "The unique identifier for a customer."
+        tests:
+          - unique
+          - not_null
+      - name: number_of_orders
+        description: "Total number of orders placed by the customer. Should be positive."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_positive
+      - name: lifetime_value
+        description: "Total amount spent by the customer. Should be non-negative."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_non_negative

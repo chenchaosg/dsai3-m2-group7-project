@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: fct_payments
+    description: "Payment fact table, providing detailed information for each payment transaction. This model joins payment data with order and customer information to enable analysis on payment behavior."
+    
+    columns:
+      - name: order_id
+        description: "The unique identifier for an order. Foreign key to the orders table."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_olist_orders')
+              field: order_id
+
+      - name: payment_type
+        description: "The method of payment used by the customer (e.g., credit_card, boleto)."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['credit_card', 'boleto', 'voucher', 'debit_card', 'not_defined']
+
+      - name: payment_installments
+        description: "The number of installments chosen for the payment."
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_non_negative
+
+      - name: payment_value
+        description: "The value of the payment transaction."
+        tests:
+          - not_null
+          # A single payment transaction can be zero, for example, when a voucher covers the full amount.
+          - dbt_expectations.expect_column_values_to_be_non_negative
+
+      - name: order_purchase_at
+        description: "Timestamp when the order was placed."
+        tests:
+          - not_null
+
+      - name: customer_state
+        description: "The state abbreviation where the customer is located (e.g., SP, RJ)."

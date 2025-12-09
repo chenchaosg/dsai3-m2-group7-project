@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: stg_product_category_name_translation
+    description: Staging table for product category name translations.
+    columns:
+      - name: product_category_name
+        tests:
+          - unique
+          - not_null

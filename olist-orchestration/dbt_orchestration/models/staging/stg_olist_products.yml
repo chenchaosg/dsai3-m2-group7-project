@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_olist_products
+    description: Staging table for products.
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+      - name: product_weight_g
+        description: Product weight should be positive.
+        tests:
+          - dbt_expectations.expect_column_values_to_be_positive

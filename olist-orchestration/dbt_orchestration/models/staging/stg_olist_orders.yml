@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_olist_orders
+    description: Staging table for orders data. The core of the dataset.
+    columns:
+      - name: order_id
+        description: Primary key for orders.
+        tests:
+          - unique
+          - not_null
+      - name: order_status
+        description: The status of the order.
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['delivered', 'invoiced', 'shipped', 'processing', 'unavailable', 'canceled', 'created', 'approved']
+      - name: order_delivered_to_customer_at
+        description: For delivered orders, this should not be null.
+        tests:
+            - not_null:
+                where: "order_status = 'delivered'"

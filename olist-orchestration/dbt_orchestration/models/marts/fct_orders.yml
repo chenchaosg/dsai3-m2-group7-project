@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "Core fact table containing all order item level details, joined with all relevant dimensions. This is the main table for analysis."
+    columns:
+      - name: order_item_sk
+        description: "A surrogate key for each order item."
+        tests:
+          - unique
+          - not_null
+      - name: delivery_days
+        description: "Number of days from purchase to delivery. Should not be negative."
+        tests:
+          - dbt_expectations.expect_column_values_to_be_non_negative
+      - name: review_score
+        description: "Customer review score from 1 to 5."
+        tests:
+          - accepted_values:
+              values: [1, 2, 3, 4, 5]
