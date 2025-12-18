@@ -856,7 +856,39 @@ WHERE c.avg_review_score BETWEEN 3.5 AND 5
 ORDER BY avg_review_score DESC;;
 ```
 
-### 8. Category Segmentation
+### 8. Price Distribution
+```sql
+WITH product_prices AS (
+    SELECT
+        product_id,
+        SAFE_DIVIDE(total_revenue_generated, total_units_sold) AS unit_price
+    FROM
+        `my-project-dsai-3.olist_data.dim_products`
+    WHERE
+        total_units_sold > 0
+)
+SELECT
+    CASE 
+        -- EDIT THIS NUMBER: Items under 50 are Low-end
+        WHEN unit_price < 50 THEN '1. Low-end (< R$50)'
+        
+        -- EDIT THIS NUMBER: Items between 50 and 150 are Mid-range
+        WHEN unit_price >= 50 AND unit_price < 150 THEN '2. Mid-range (R$50 - R$150)'
+        
+        -- Everything else is High-end
+        ELSE '3. High-end (> R$150)'
+    END AS price_tier,
+    
+    COUNT(product_id) AS product_count
+FROM
+    product_prices
+GROUP BY
+    1 -- This groups by the price_tier we defined above
+ORDER BY
+    1 DESC;
+```
+
+### 9. Category Segmentation
 ```sql
 WITH category_metrics AS (
     SELECT
@@ -893,7 +925,7 @@ CROSS JOIN benchmarks b
 ORDER BY avg_review_score DESC;
 ```
 
-### 9. Category Segmentation (Only 'Grow' & 'Stars')
+### 10. Category Segmentation (Only 'Grow' & 'Stars')
 ```sql
 WITH category_metrics AS (
     SELECT
