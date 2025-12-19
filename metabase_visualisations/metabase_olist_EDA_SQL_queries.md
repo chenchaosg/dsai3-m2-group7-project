@@ -669,25 +669,27 @@ FROM
     top_sellers;
 ```
 
-### 12. Late Delivery Rate by State
+### 12. Average Late Delivery Rate
 ```sql
--- This query calculates, for each state:
--- 1. Total Revenue (GMV)
--- 2. Revenue as a percentage of the company's total revenue
--- 3. The percentage of deliveries that were late
+SELECT
+    (COUNT(CASE WHEN delivery_diff_from_estimated_days >= 0 THEN NULL ELSE 1 END)/
+    COUNT(CASE WHEN order_status = 'delivered' THEN 1 ELSE NULL END))
+FROM
+    my-project-dsai-3.olist_data.fct_orders;
+```
 
+
+### 13. Late Delivery Rate by State
+```sql
 -- We use a CTE to pre-calculate the metrics at the state level first.
 WITH state_performance AS (
     SELECT
         customer_state,
 
-        -- Metric 1: Calculate the total revenue (GMV) for each state.
-        SUM(price) AS total_revenue,
-
-        -- Metric 2: Count the number of late deliveries in each state.
+        -- Metric 1: Count the number of late deliveries in each state.
         COUNTIF(delivery_diff_from_estimated_days < 0) AS late_deliveries,
 
-        -- Metric 3: Count the total number of delivered orders in each state.
+        -- Metric 2: Count the total number of delivered orders in each state.
         COUNTIF(order_status = 'delivered' AND delivery_diff_from_estimated_days IS NOT NULL) AS total_deliveries
 
     FROM
@@ -701,15 +703,6 @@ WITH state_performance AS (
 -- Final SELECT statement to calculate percentages and filter for the big states.
 SELECT
     sp.customer_state,
-    sp.total_revenue,
-    
-    -- Calculate the revenue percentage of the total.
-    -- The denominator is a subquery that calculates the grand total revenue.
-    SAFE_DIVIDE(
-        sp.total_revenue,
-        (SELECT SUM(total_revenue) FROM state_performance)
-    ) * 100 AS percentage_of_total_revenue,
-    
     -- Calculate the late delivery rate for the state.
     SAFE_DIVIDE(
         sp.late_deliveries,
@@ -717,12 +710,8 @@ SELECT
     ) AS late_delivery_percentage
 FROM
     state_performance sp
-WHERE
-    -- Filter for the "big states" to make the comparison clear.
-    -- We define "big states" as those contributing more than 2% of total revenue.
-    sp.total_revenue > (SELECT SUM(total_revenue) * 0.02 FROM state_performance)
 ORDER BY
-    total_revenue DESC;
+    late_delivery_percentage DESC;
 ```
 
 ### PRODUCTS TAB
