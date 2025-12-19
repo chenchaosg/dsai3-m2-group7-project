@@ -1,256 +1,57 @@
-**CUSTOMERS TAB**
+**Order Reports**
 
-**1\. Customer Geographic Concentration**
+**1\. Simple Report: Order Volume and Geographic Distribution**
 
-Customers are **heavily concentrated in a small number of states and cities**, with Sao Paulo dominating customer volume, followed by other major urban regions
+• **_Insights_:** The platform has processed a total of **96,211 orders**. Geographic data reveals a heavy concentration in specific regions, with **Sao Paulo (SP)** accounting for **37.54%** of revenue, followed by Rio de Janeiro (RJ) at 13.57% and Minas Gerais (MG) at 11.53%.
 
-**Business implications**
+• **_Recommendation_:** Marketing efforts and warehouse placements should be **prioritised in the SP-RJ-MG corridor** to maintain dominant market share while investigating underrepresented states for growth opportunities.
 
-- Revenue is **urban-driven**, meaning logistics, marketing, and seller acquisition strategies should prioritize top metro areas.
-- There is **growth potential in underpenetrated states**, where customer acquisition costs may be lower.
+**2\. Simple Report: Temporal Order Patterns**
 
-**Action**
+• **_Insights_:** Order volume peaks during the middle of the day, specifically between **10:00 AM and 4:00 PM**. Weekly trends show that **Monday and Tuesday** are the highest volume days, with a steady decline towards the weekend.
 
-- Expand localized promotions and faster delivery promises in high-density cities.
-- Pilot marketing campaigns in mid-tier states to diversify demand.
+• **_Recommendation_:** Schedule **customer support and logistics staff peaks** during the early-week midday hours to ensure rapid order processing and response times.
 
-**2\. Customer Base Skews Toward One-Time Buyers**
+**3\. Complex Report: Black Friday Operational Resilience**
 
-The dashboard indicates that the majority of customers place **only one order**, while repeat customers form a much smaller segment
+• **_Insights_:** During Black Friday, daily order volume surges to **1,147**, which is an **8.23x multiple** of normal daily orders. However, this volume spike severely impacts logistics; the **late delivery rate jumps from a normal 3.68% to 16.41%**.
 
-**Business implications**
+• **_Recommendation_:** Implement **dynamic shipping deadlines** and pre-emptive stock positioning for Black Friday. The platform must scale its courier capacity significantly to prevent the 4x increase in late deliveries seen during peak events.
 
-- Customer acquisition is working, but **retention is weak**.
-- Lifetime value (LTV) is likely lower than it could be.
+**4\. Complex Report: Revenue vs Volume Category Segmentation**
 
-**Action**
+• **_Insights_:** With 71 product categories and 32,951 products, Olist uses a segmentation model to categorise performance into **"Grow", "Stars", "Deprioritise", and "Fix"**. "bed_bath_table" is the highest volume category, but revenue distribution shows that categories like "health_beauty" and "watches_gifts" contribute significantly to GMV despite varying volumes.
 
-- Introduce post-purchase incentives (discounts on second order).
-- Use email/WhatsApp remarketing for customers after successful delivery.
-- Segment customers by first-purchase category to personalize follow-ups.
+• **_Recommendation_:** Focus promotional spend on the **"Stars" and "Grow" segments** to maximise ROI. Categories in the **"Fix"** segment should undergo a price distribution audit to see if they are being priced out of the market.
 
-**3\. Order Volume Is Uneven Across Customers**
+\--------------------------------------------------------------------------------
 
-A small subset of customers contributes **multiple orders**, while most contribute minimally
+**Customer Review Reports**
 
-**Business implications**
+**1\. Simple Report: Delivery Impact on Satisfaction**
 
-- There is a **power-user segment** worth protecting and growing.
-- Losing these customers would disproportionately impact revenue.
+• **_Insights_:** There is a direct causal link between logistics and sentiment. **On-time or early deliveries** yield an average review score of **4.23**, whereas **late deliveries** cause the score to plummet to **2.26**.
 
-**Action**
+• **_Recommendation_:** To maintain a high platform rating, Olist should implement a **"Late Delivery Warning" system** that proactively notifies customers of delays before they leave a negative review.
 
-- Create loyalty tiers for high-frequency customers.
-- Offer early access or free shipping for repeat buyers.
+**2\. Simple Report: Seller Satisfaction Distribution**
 
-**4\. Delivery Experience Strongly Influences Satisfaction**
+• **_Insights_:** Out of 2,970 sellers, only **552 (approx. 18.6%)** are classified as "5-star sellers". The top 50 sellers contribute roughly 25.93% of total revenue with an average review score of 4.1.
 
-Customer review scores on the dashboard correlate with **delivery performance**, especially on-time vs late delivery
+• **_Recommendation_:** Launch a **"Preferred Seller" badge** for those 552 top-performing sellers to encourage customers to buy from high-satisfaction sources, potentially increasing the platform's overall review average.
 
-**Business implications**
+**3\. Complex Report: The "Golden Cohort" and Retention**
 
-- Logistics quality directly affects customer perception.
-- Late deliveries risk churn and negative word-of-mouth.
+• **_Insights_:** Retention is currently very low, with **97% of customers being new**. However, the "Golden Cohort"-customers who received their order on time and gave 5 stars-shows a **higher repurchase rate of 3.13%** compared to 2.85% for all others.
 
-**Action**
+• **_Recommendation_:** The platform should focus on **converting 5-star reviewers into loyal customers** through targeted post-purchase loyalty rewards, as they are the most likely group to return.
 
-- Prioritize sellers and carriers with strong delivery SLAs.
-- Flag late deliveries for proactive customer communication or compensation.
+**4\. Complex Report: Regional Late Delivery and Review Correlation**
 
-**5\. Customer Distribution Reflects Infrastructure Strength**
+• **_Insights_:** Late delivery rates vary significantly by state, with **Alagoas (AL) at 20.88%** and Maranhão (MA) at 17.89%, while Amazonas (AM) is as low as 3.05%. These regional delivery failures directly depress the review scores in those specific geographic zones.
 
-Regions with higher customer density align closely with areas of **stronger logistics infrastructure**
+• **_Recommendation_:** Conduct a **carrier performance audit in the Northeast region (AL, MA, CE)**. High late rates in these states are damaging the platform's reputation; switching to local last-mile providers in these high-risk areas is essential.
 
-**Business implications**
+\--------------------------------------------------------------------------------
 
-- Scaling into new regions requires **logistics readiness**, not just marketing.
-- Poor infrastructure regions may drive lower satisfaction scores.
-
-**Action**
-
-- Evaluate fulfilment centre placement based on customer clusters.
-- Partner with regional logistics providers before scaling marketing spend.
-
-**Executive Summary**
-
-**What the dashboard tells us overall:**
-
-- Customer demand is **geographically concentrated**
-- Acquisition is strong, but **retention is the main weakness**
-- Delivery performance is a **key driver of customer satisfaction**
-- A small group of repeat customers represents **high strategic value**
-
-**SELLERS TAB**
-
-**1\. Seller Distribution Is Highly Skewed**
-
-**Most sellers contribute very few orders**, while a small minority accounts for a large share of total sales volume
-
-**Business implications**
-
-- Platform revenue depends disproportionately on a **small core of high-performing sellers**.
-- Seller churn in this top tier would materially impact GMV.
-
-**Action**
-
-- For "top sellers", offer account management, fee incentives, or logistics benefits to retain them.
-
-**2\. Seller Geographic Clustering Mirrors Customer Demand**
-
-Sellers are heavily clustered in **economically strong and logistics-ready regions**, particularly large urban states
-
-**Business implications**
-
-- Supply is strongest where demand already exists, reinforcing regional concentration.
-- Underserved regions may face longer delivery times and poorer customer experience.
-
-**Action**
-
-- Incentivize seller onboarding in underrepresented regions.
-- Use reduced commissions or fulfilment support to rebalance supply.
-
-**3\. Delivery Performance Varies Significantly by Seller**
-
-There is clear variation in **delivery lead time and delays across sellers**
-
-**Business implications**
-
-- Seller operational quality directly affects customer satisfaction.
-- Poor-performing sellers introduce platform-wide reputation risk.
-
-**Action**
-
-- Introduce seller performance scorecards (on-time %, avg delay).
-- Penalize or coach consistently late sellers.
-- Preferentially surface high-performing sellers in search/ranking.
-
-**4\. Seller Performance Correlates with Review Scores**
-
-Higher-performing sellers tend to receive **better customer review scores**, while sellers with delivery issues cluster around lower ratings
-
-**Business implications**
-
-- Review score is a reliable proxy for seller operational health.
-- Low-rated sellers likely drive higher refund, churn, and support costs.
-
-**Action**
-
-- Set minimum rating thresholds for promotions or featured listings.
-- Proactively intervene when seller ratings decline.
-
-**5\. Long-Tail Sellers Add Variety but Limited Volume**
-
-The dashboard suggests many sellers are **low-volume, long-tail contributors**
-
-**Business implications**
-
-- These sellers increase assortment breadth but not GMV.
-- Operational overhead may outweigh their revenue contribution.
-
-**Action**
-
-- Segment sellers into:
-  - Core revenue sellers
-  - Growth-potential sellers
-  - Long-tail / low-activity sellers
-- Automate onboarding and support for low-volume sellers to reduce costs.
-
-**Combined Customer + Seller Insight (Strategic View)**
-
-When combining both dashboards:
-
-- **Customer satisfaction is tightly linked to seller delivery performance**
-- **Revenue concentration risk exists on both sides** (few customers, few sellers)
-- Logistics and seller quality are the **core levers for growth**, not just marketing
-
-**Executive Takeaways**
-
-- Protect and grow **top sellers**
-- Actively manage **low-performing sellers**
-- Expand seller base strategically to reduce geographic and operational risk
-- Use seller metrics (delivery, reviews) directly in ranking and promotion logic
-
-**PRODUCTS TAB**
-
-**1\. Sales Are Concentrated in a Few Product Categories**
-
-The dashboard shows that **a small number of product categories dominate total orders and revenue**, while many categories contribute marginal volume
-
-**Business implications**
-
-- Revenue is highly dependent on **core categories**.
-- Category-level shocks (supply issues, seasonality) could impact GMV.
-
-**Action**
-
-- Protect top categories with priority seller onboarding and inventory availability.
-- Diversify by promoting fast-growing secondary categories.
-
-**2\. Long-Tail Products Increase Assortment, Not Revenue**
-
-Most products receive **very low order counts**, confirming a strong long-tail effect
-
-**Business implications**
-
-- Wide assortment boosts perceived choice but adds complexity.
-- Carrying too many low-volume SKUs increases operational cost.
-
-**Action**
-
-- Apply differentiated logistics and storage policies.
-- Consider delisting or deprioritizing persistently inactive SKUs.
-
-**3\. Product Weight and Size Drive Logistics Performance**
-
-Heavier and bulkier products show **longer delivery times and higher delay rates**
-
-**Business implications**
-
-- Logistics cost and customer satisfaction vary significantly by product type.
-- Uniform shipping SLAs are inefficient.
-
-**Action**
-
-- Introduce category-specific delivery promises.
-- Adjust shipping fees or seller requirements for heavy items.
-
-**4\. Price Distribution Shows Strong Mid-Range Clustering**
-
-Most products are priced in a **mid-range band**, with fewer premium or ultra-low-priced items
-
-**Business implications**
-
-- Platform competes primarily on **value-for-money**, not luxury.
-- Upsell opportunities exist for premium segments.
-
-**Action**
-
-- Create premium category badges or curated collections.
-- Encourage bundles to increase AOV in mid-priced categories.
-
-**5\. Review Scores Vary Significantly by Category**
-
-Some categories consistently achieve **higher customer review scores**, while others underperform
-
-**Business implications**
-
-- Poorly rated categories may drive churn despite high sales.
-- Quality issues may be systemic within certain categories.
-
-**Action**
-
-- Investigate seller and logistics performance by category.
-- Set stricter seller quality controls in low-rated categories.
-
-**Cross-Dashboard Strategic Insight (Customers + Sellers + Products)**
-
-When all three dashboards are viewed together:
-
-- **Top product categories + top sellers + urban customers** drive most GMV.
-- Long-tail products and sellers add variety but dilute operational focus.
-
-**Executive Summary**
-
-- Protect and optimize **core product categories**
-- Improve weak categories by **upgrading seller quality**
-- Use product data to drive pricing, bundling, and AOV growth
+**Analogy:** Managing these reports is like **running a professional kitchen**. The **Simple Reports** are like checking the temperature and the clock-they tell you if the food is ready and how many people are waiting. The **Complex Reports** are like analyzing why the steak was sent back; they look at the relationship between the supplier (seller), the waiter (delivery), and the diner's mood (review score) to ensure they don't just eat once, but become regulars.
