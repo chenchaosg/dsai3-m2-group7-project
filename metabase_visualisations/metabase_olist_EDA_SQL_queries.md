@@ -283,6 +283,9 @@ ORDER BY
 ```
 ### 14. Black Friday
 ```sql
+-- This query analyzes the platform's performance on the single day of Black Friday 2017
+-- by comparing its volume and late delivery rate against a "normal" baseline period.
+
 -- Step 1: Define and calculate all metrics for the Black Friday 2017 SINGLE DAY.
 WITH black_friday_metrics AS (
     SELECT
@@ -310,7 +313,7 @@ normal_period_metrics AS (
         92 AS normal_num_days
     FROM
         my-project-dsai-3.olist_data.fct_orders
-    WHERE
+	 WHERE
         -- Define the normal baseline period (3 months prior to the event).
         DATE(order_purchase_at) BETWEEN '2017-08-01' AND '2017-10-31'
 )
@@ -319,18 +322,17 @@ normal_period_metrics AS (
 SELECT
     -- Normal Period Metrics
     np.normal_orders / np.normal_num_days AS normal_avg_daily_orders,
-    SAFE_DIVIDE(np.normal_late_deliveries, np.normal_total_deliveries) AS normal_late_delivery_rate,
 
     -- Black Friday Period Metrics (now representing a single day)
     bf.bf_orders AS bf_daily_orders, -- No division needed as it's just 1 day.
-    SAFE_DIVIDE(bf.bf_late_deliveries, bf.bf_total_deliveries) AS bf_late_delivery_rate,
 
     -- The "X-Factor" Comparison
     -- This calculates the "Xx" part of the statement for order volume.
     SAFE_DIVIDE(
         bf.bf_orders, -- Black Friday's total orders
         (np.normal_orders / np.normal_num_days) -- Normal average daily orders
-    ) AS order_volume_multiple
+    ) AS order_volume_multiple,
+	SAFE_DIVIDE(bf.bf_late_deliveries, bf.bf_total_deliveries) AS bf_late_delivery_rate
 
 -- We use a CROSS JOIN as each CTE only returns a single row of aggregated data.
 FROM
